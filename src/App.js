@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Todo from './views/todo';
 import Covid from './views/Covid'
+import {CountDown} from './views/Countdown';
+import NewCountDown from './views/NewCountDown';
 const App = () => {
 
   const [name, setName] = useState('Hiep');
@@ -34,19 +36,24 @@ const App = () => {
   const handleChange = (event) => {
     setAddress(event.target.value);
   }
- 
+  const onTimeUp = () => {
+    // alert('Time ups')
+  } 
 
 
   // dung map khong sua du lieu cua bien goc
 
   return (
     <div className="App">
-     
+
       <header className="App-header">
-      <Nav />
+        <Nav />
         <img src={logo} className="App-logo" alt="logo" />
-        <Covid/>
-       
+        <NewCountDown />
+        <CountDown onTimeUp={onTimeUp} />
+        
+        <Covid />
+
         {/* <p>Hello {name} from {address} </p> */}
 
 
