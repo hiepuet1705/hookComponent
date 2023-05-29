@@ -1,0 +1,25 @@
+.btn-detail{
+    text-decoration: none;
+}
+.btn-add-new{
+    margin: 10px 0;
+    cursor: pointer;
+}
+.add-new-container{
+    
+    width: 400px;
+    border: 1px solid gray;
+    padding: 6px;
+    margin: 0 auto;
+    
+    .text-add-new{
+        margin: 10px 0;
+
+    }
+    .input-data{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+
+    }
+}

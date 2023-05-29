@@ -6,8 +6,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Todo from './views/todo';
 import Covid from './views/Covid'
-import {CountDown} from './views/Countdown';
+import { CountDown } from './views/Countdown';
 import NewCountDown from './views/NewCountDown';
+import Blog from './views/Blog';
+import DetailBlog from './views/DetailBlog';
+import AddNewBlog from './views/AddNewBlog';
+import Test from './views/Test';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 const App = () => {
 
   const [name, setName] = useState('Hiep');
@@ -38,33 +48,50 @@ const App = () => {
   }
   const onTimeUp = () => {
     // alert('Time ups')
-  } 
+  }
 
 
   // dung map khong sua du lieu cua bien goc
 
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
 
-      <header className="App-header">
-        <Nav />
-        <img src={logo} className="App-logo" alt="logo" />
-        <NewCountDown />
-        <CountDown onTimeUp={onTimeUp} />
-        
-        <Covid />
+        <header className="App-header">
+          <Nav />
+      
+          <img src={logo} className="App-logo" alt="logo" />
+          <Switch>
+          <Route path='/' exact>
+            <Covid />
+          </Route>
+          <Route path='/timer'>
+            <NewCountDown />
+            <CountDown onTimeUp={onTimeUp} />
+          </Route>
+          <Route path="/todo">
 
-        {/* <p>Hello {name} from {address} </p> */}
+            <Todo todos={todos} deleteTodo={deleteTodo} title="Hiep's todo" />
+            <input type="text" onChange={(event) => handleChange(event)} value={address} />
 
 
-        {/* <Todo todos={todos} title="All Todos" deleteTodo={deleteTodo} />
-        <Todo todos={todos.filter(item => { return item.type === 'hiep' })} deleteTodo={deleteTodo} title="Hiep's todo" />
-        <input type="text" onChange={(event) => handleChange(event)} value={address} />
+            <button onClick={() => handleClick()} >Click me</button>
+          </Route>
+          <Route path='/blog' exact>
+              <Blog/>
+          </Route>
+          <Route path='/blog/:id' exact>
+             <DetailBlog/>
+          </Route>
+          <Route path='/add-new' >
+              <AddNewBlog/>
+          </Route>
+        </Switch>
 
-
-        <button onClick={() => handleClick()} >Click me</button> */}
-      </header>
-    </div>
+        </header>
+       
+      </div>
+    </Router>
   );
 }
 

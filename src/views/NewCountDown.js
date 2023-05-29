@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react'
 const NewCountDown = () => {
     const [count,setCount] = useState(20);
     useEffect(() => {
-        if(count == 0) {
+        if(count === 0) {
             return;
         }
         let timer =  setInterval(()=>{

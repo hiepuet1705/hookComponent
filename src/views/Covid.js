@@ -1,19 +1,19 @@
 import React from "react";
-import { useState, useEffect } from "react"
-import axios from "axios";
-import moment from 'moment'
+
 import useFetch from "../custom/fetchData";
 const Covid = () => {
   // const [dataCovid, setDataCovid] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
   // const [isError, setIsError] = useState(false);
-  const {data,isLoading,isError} = useFetch('https://covid-api.com/api/reports?date=2020-03-15')
+  const { data, isLoading, isError } = useFetch('https://covid-api.com/api/reports?date=2020-03-15')
 
+    let dataCovid = [];
+     dataCovid = data.data;
 
   return (
-    <>
+    <div style={{ backgroundColor: '#282c34', color: 'white', marginTop: '0px' }}>
       <table id="customers">
-        {console.log(data)}
+
         <thead>
           <tr>
 
@@ -25,8 +25,8 @@ const Covid = () => {
           </tr>
         </thead>
         <tbody>
-          {!isError && !isLoading && data && data.length > 0 &&
-            data.map((item, index) => {
+          {!isError && !isLoading && dataCovid && dataCovid.length > 0 &&
+            dataCovid.map((item, index) => {
               return (<tr key={index}>
 
                 <td>{item.region.province}</td>
@@ -48,7 +48,7 @@ const Covid = () => {
         </tbody>
 
       </table>
-    </>
+    </div>
   )
 }
 export default Covid;

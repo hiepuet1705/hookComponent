@@ -15,7 +15,7 @@ class CountDown extends React.Component {
        },1000)
     }
     componentDidUpdate(prevProps,prevState){
-        console.log('did update')
+       
         if(prevState.count !==  this.state.count && this.state.count === 0 ){
             if(this.timer){
                 clearInterval(this.timer);

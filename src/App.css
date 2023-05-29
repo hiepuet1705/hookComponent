@@ -38,10 +38,10 @@
   }
 }
 #customers {
+
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  min-width: 50%;
-  max-width: 75%;
+  width: 100%;
   margin: 20px;
 
 }
