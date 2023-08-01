@@ -7,7 +7,7 @@ const NewCountDown = () => {
             return;
         }
         let timer =  setInterval(()=>{
-            setCount(count-1)
+            setCount(prevCount => prevCount-1)
         },1000)
         return ()=>{
             clearInterval(timer)

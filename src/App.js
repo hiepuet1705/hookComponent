@@ -12,6 +12,7 @@ import Blog from './views/Blog';
 import DetailBlog from './views/DetailBlog';
 import AddNewBlog from './views/AddNewBlog';
 import Test from './views/Test';
+import Word from './views/Word';
 import {
   BrowserRouter as Router,
   Switch,
@@ -85,6 +86,9 @@ const App = () => {
           </Route>
           <Route path='/add-new' >
               <AddNewBlog/>
+          </Route>
+          <Route path='/secret' exact>
+            <Word/>
           </Route>
         </Switch>
 

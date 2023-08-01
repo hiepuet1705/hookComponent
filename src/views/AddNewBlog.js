@@ -1,12 +1,33 @@
 import './Blog.scss'
 import { useState } from 'react';
-const AddNewBlog = () => {
+import axios from 'axios';
+const AddNewBlog = (props) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const handleSubmit = () =>{
-        console.log('Title check =>>',title)
-        console.log('Content check =>>',content)
+    const handleSubmit = async () => {
+        if (!title || !content) {
+            alert('Missing neccesary information')
+            return;
+        }
+        let data = {
+            title:title,
+            body: content,
+            id: 101,
+        }
+    
+        let res = await axios.post('https://jsonplaceholder.typicode.com/posts',data)
+        
+        if(res && res.data ){
+
+            let newBlog = res.data;
+            props.handleAddNew(newBlog)
+        }
     }
+
+   
+
+
+
     return (<div className="add-new-container">
         <div className="text-add-new"> ---- Add New Blog ----</div>
         <div className='input-data'>
